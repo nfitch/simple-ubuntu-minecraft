@@ -68,3 +68,7 @@ are rejected (`systemctl status minecraft` gives the last few lines).
 * https://askubuntu.com/questions/1198585/how-to-i-make-a-program-start-on-boot-no-gui
 * https://gist.github.com/chungy/0b2c438c7db90b32701a
 * https://www.shells.com/l/en-US/tutorial/0-A-Guide-to-Installing-a-Minecraft-Server-on-Linux-Ubuntu
+
+# License
+
+MIT.  See LICENSE.
