@@ -1,3 +1,6 @@
 systemd/
 tools/
 worlds/
+
+template-minecraft/ops.json
+template-minecraft/whitelist.json
