@@ -1,0 +1,26 @@
+[Unit]
+Description=Minecraft server
+Wants=network.target
+After=local-fs.target network.target
+
+[Service]
+User=minecraft
+Group=minecraft
+UMask=0027
+
+EnvironmentFile=/etc/minecraft
+KillMode=none
+SuccessExitStatus=0 1 255
+
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+
+WorkingDirectory=REPLACE_MSERVER_WORLD_DIRECTORY
+ExecStart=/usr/bin/java -Xms${MINHEAP} -Xmx${MAXHEAP} -XX:ParallelGCThreads=${THREADS} -jar server.jar --nogui
+ExecStop=/mnt/md0/minecraft/tools/mcrcon/mcrcon -H localhost -p ${RCON_PASSWD} stop
+
+[Install]
+WantedBy=multi-user.target
