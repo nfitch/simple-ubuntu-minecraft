@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <style>
+     html,
+     body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        height: 100%;
+        display: none;
+      }
+    </style>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script type="text/javascript">
+      function loadData() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                  var data = JSON.parse(this.responseText);
+                  viewMap(data);
+              }
+          };
+          xhttp.open("GET", "output/mapinfo.json", true);
+          xhttp.send();
+      }
+
+      function viewMap(data) {
+          var dmap = document.querySelector('#map');
+          dmap.style.display = "block";
+
+          let [width, height] = data.imageDimensions;
+          data.mapDimensions = [-height, width];
+          data.mapCenter = [-height / 2, width / 2];
+
+          console.log(data);
+
+          const map = L.map('map', {
+              crs: L.CRS.Simple,
+              center: data.mapCenter,
+              zoomControl: false,
+              scrollWheelZoom: false,
+              doubleClickZoom: false,
+              zoom: 0,
+              maxBounds: [
+                  [0, 0],
+                  data.mapDimensions,
+              ],
+          });
+
+          L.tileLayer('output/{x}/{y}.png', {
+              tileSize: data.tileSize,
+              zoomOffset: -1,
+          }).addTo(map);
+      }
+    </script>
+</head>
+
+<body onload="loadData()">
+    <div id="map"></div>
+</body>

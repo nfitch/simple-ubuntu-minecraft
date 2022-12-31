@@ -11,6 +11,7 @@ SYSTEMD_VARS_FILE=$SYSTEMD_DIR/minecraft
 SYSTEMD_SERVICE_FILE=$SYSTEMD_DIR/minecraft.service
 RCON_PASSWORD_FILE=$SYSTEMD_DIR/rcon.password
 RCON=$TOOLS_DIR/mcrcon/mcrcon
+MCMAP=$TOOLS_DIR/mcmap/build/bin/mcmap
 MINECRAFT_VERSION_MANIFEST=https://launchermeta.mojang.com/mc/game/version_manifest.json
 
 # Common Functions
