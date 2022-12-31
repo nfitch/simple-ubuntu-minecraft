@@ -33,6 +33,9 @@ REAL_OUTPUT_DIR=${OUTPUT_DIR}/$NAME
 
 mkdir -p "${REAL_OUTPUT_DIR}/output"
 
+echo "Generating image for $NAME..."
+$MCMAP -file $REAL_OUTPUT_DIR/output.png $WORLDS_DIR/$NAME/world
+
 echo "Generating map for $NAME..."
 $MCMAP -tile 256 -file $REAL_OUTPUT_DIR/output $WORLDS_DIR/$NAME/world
 

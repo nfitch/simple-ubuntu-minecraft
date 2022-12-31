@@ -32,7 +32,10 @@
         //Manually is good enough for now...
         var innerHTML = "<h3>Minecraft worlds:</h3><ul>";
         for(var world in data) {
-            innerHTML += "<li><a href='" + world + "'>" + world + "</a></li>";
+            innerHTML += "<li>" + world + ": " +
+		"<a href='" + world + "/output.png'>image</a> | " +
+		"<a href='" + world + "'>map</a>" +
+		"</li>";
         }
         innerHTML += "</ul>";
         var view = document.querySelector("#view");
