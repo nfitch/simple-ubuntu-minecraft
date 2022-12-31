@@ -1,0 +1,46 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Minecraft Maps</title>
+  <style>
+    body {
+      font-family: monospace, sans-serif;
+    }
+    h3 {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+    ul {
+      margin-top: 5px;
+    }
+  </style>
+  <script type="text/javascript">
+    function loadWorlds() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+                renderView(data);
+            }
+        };
+        xhttp.open("GET", "worlds.json", true);
+        xhttp.send();
+    }
+
+    function renderView(data) {
+        console.log(data);
+
+        //Manually is good enough for now...
+        var innerHTML = "<h3>Minecraft worlds:</h3><ul>";
+        for(var world in data) {
+            innerHTML += "<li><a href='" + world + "'>" + world + "</a></li>";
+        }
+        innerHTML += "</ul>";
+        var view = document.querySelector("#view");
+        view.innerHTML = innerHTML;
+    }
+  </script>
+</head>
+
+<body onload="loadWorlds()">
+  <div id="view"></div>
+</body>
