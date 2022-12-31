@@ -47,7 +47,7 @@ WORLDS_JSON_FILE=$OUTPUT_DIR/worlds.json
 WORLD_JSON='{}'
 while read l; do
     DIR_WORLD_NAME=$(basename $l)
-    WORLD_JSON=$(echo "$WORLD_JSON" | jq ". + { $DIR_WORLD_NAME: {}}")
+    WORLD_JSON=$(echo "$WORLD_JSON" | jq ". + { \"$DIR_WORLD_NAME\": {}}")
 done <<<$(ls -d -1 $OUTPUT_DIR/*/ | sort)
 echo "$WORLD_JSON" >$WORLDS_JSON_FILE
 
