@@ -59,7 +59,7 @@ First, install mcmap under `tools`:
 
 Then you can render a single map to a location:
 
-     $ ./mserver_mcmap.sh -n foo -o ./maps
+     $ ./mserver_mcmap.sh -n foo -o maps
      $ ls maps
      foo
      $ ls maps/foo

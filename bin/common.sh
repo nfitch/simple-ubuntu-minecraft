@@ -4,6 +4,7 @@
 ROOT_DIR=$(dirname $(dirname $(realpath ${BASH_SOURCE:-$0})))
 SYSTEMD_TEMPLATE_DIR=$ROOT_DIR/template-systemd
 MINECRAFT_TEMPLATE_DIR=$ROOT_DIR/template-minecraft
+HTTP_TEMPLATE_DIR=$ROOT_DIR/template-http
 WORLDS_DIR=$ROOT_DIR/worlds
 SYSTEMD_DIR=$ROOT_DIR/systemd
 TOOLS_DIR=$ROOT_DIR/tools
