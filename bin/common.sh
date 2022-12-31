@@ -8,12 +8,17 @@ HTTP_TEMPLATE_DIR=$ROOT_DIR/template-http
 WORLDS_DIR=$ROOT_DIR/worlds
 SYSTEMD_DIR=$ROOT_DIR/systemd
 TOOLS_DIR=$ROOT_DIR/tools
+
 SYSTEMD_VARS_FILE=$SYSTEMD_DIR/minecraft
 SYSTEMD_SERVICE_FILE=$SYSTEMD_DIR/minecraft.service
 RCON_PASSWORD_FILE=$SYSTEMD_DIR/rcon.password
+
 RCON=$TOOLS_DIR/mcrcon/mcrcon
 MCMAP=$TOOLS_DIR/mcmap/build/bin/mcmap
+
 MINECRAFT_VERSION_MANIFEST=https://launchermeta.mojang.com/mc/game/version_manifest.json
+DEFAULT_MINECRAFT_PORT=25565
+DEFAULT_RCON_PORT=25575
 
 # Common Functions
 function setup_dirs() {

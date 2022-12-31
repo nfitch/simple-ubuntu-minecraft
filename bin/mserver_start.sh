@@ -34,6 +34,17 @@ if [ ! -e $WORLDS_DIR/$NAME ]; then
     exit 1
 fi
 
+# Search for and modify the server.properties
+SERVER_PROPERTIES_FILE=$WORLDS_DIR/$NAME/server.properties
+if [ ! -e $SERVER_PROPERTIES_FILE ]; then
+    echo "Can't locate the server.properties file at $SERVER_PROPERTIES_FILE.  Exiting..."
+    exit 1
+fi
+
+sed -i -e "s#query.port=[0-9]*#query.port=$DEFAULT_MINECRAFT_PORT#g" $SERVER_PROPERTIES_FILE
+sed -i -e "s#server-port=[0-9]*#server-port=$DEFAULT_MINECRAFT_PORT#g" $SERVER_PROPERTIES_FILE
+sed -i -e "s#rcon.port=[0-9]*#rcon.port=$DEFAULT_RCON_PORT#g" $SERVER_PROPERTIES_FILE
+
 # Ok, start it up
 echo "Starting $NAME from $WORLD_DIR..."
 systemctl start minecraft.service

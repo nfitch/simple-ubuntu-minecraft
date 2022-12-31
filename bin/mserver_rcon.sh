@@ -16,10 +16,8 @@ shift $((OPTIND-1))
 
 minecraft_is_running
 if [ $? == 0 ]; then
-    echo "Minecraft isn't running."
-    exit 1
+    echo "We don't think Minecraft is running... but we'll try anyways..."
 fi
 
 read_rcon_password
-
 $RCON -p "$RCON_PASSWORD"
