@@ -30,17 +30,35 @@ if [ ! -e $WORLDS_DIR/$NAME ]; then
 fi
 
 REAL_OUTPUT_DIR=${OUTPUT_DIR}/$NAME
+mkdir -p "${REAL_OUTPUT_DIR}"
 
-mkdir -p "${REAL_OUTPUT_DIR}/output"
+# mcmap
+if [ -e $MCMAP ]; then
+    echo "Running mcmap..."
 
-echo "Generating image for $NAME..."
-$MCMAP -file $REAL_OUTPUT_DIR/output.png $WORLDS_DIR/$NAME/world
+    mkdir -p "${REAL_OUTPUT_DIR}/mcmap/output"
 
-echo "Generating map for $NAME..."
-$MCMAP -tile 256 -file $REAL_OUTPUT_DIR/output $WORLDS_DIR/$NAME/world
+    echo "Generating image for $NAME..."
+    $MCMAP -file $REAL_OUTPUT_DIR/mcmap/output.png $WORLDS_DIR/$NAME/world
 
-echo "Finishing up..."
-cp $HTTP_TEMPLATE_DIR/index-map.html $REAL_OUTPUT_DIR/index.html
+    echo "Generating map for $NAME..."
+    $MCMAP -tile 256 -file $REAL_OUTPUT_DIR/mcmap/output $WORLDS_DIR/$NAME/world
+
+    echo "Finishing up mcmap..."
+    cp $HTTP_TEMPLATE_DIR/index-mcmap.html $REAL_OUTPUT_DIR/mcmap/index.html
+fi
+
+# unmined
+if [ -e $UNMINED ]; then
+    echo "Running unmined..."
+
+    mkdir -p "${REAL_OUTPUT_DIR}/unmined"
+
+    $UNMINED web render --world $WORLDS_DIR/$NAME/world \
+	     --dimension overworld \
+	     --output $REAL_OUTPUT_DIR/unmined \
+	     --zoomin 3 --zoomout 4
+fi
 
 # Generate the index.html and the world list
 cp $HTTP_TEMPLATE_DIR/index.html $OUTPUT_DIR/index.html

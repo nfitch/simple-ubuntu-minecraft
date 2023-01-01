@@ -50,7 +50,7 @@ This has some hooks for you to generate maps you can view in a web browser using
 
 First, install mcmap under `tools`:
 
-    $ apt update && apt install git make g++ libpng-dev cmake libspdlog-dev
+    $ apt update && apt install git make g++ libpng-dev cmake libspdlog-dev jq
     $ cd tools
     $ git clone https://github.com/spoutn1k/mcmap
     $ mkdir -p mcmap/build && cd mcmap/build
@@ -59,12 +59,30 @@ First, install mcmap under `tools`:
 
 Then you can render a single map to a location:
 
-     $ ./mserver_mcmap.sh -n foo -o maps
+     $ ./mserver_map.sh -n foo -o maps
      $ ls maps
-     foo
+     index.html      foo
      $ ls maps/foo
-     index.html     output
+     mcmap
 
+# uNmINeD Integration
+
+This has some hooks for you to generate maps you can view in a web browser using uNmINeD (https://unmined.net).  First download the linux cli, then untar and link it such that unmined-cli is under `tools/unmined/unmined-cli`.
+
+    $ apt update && apt install jq
+    $ cd tools
+    $ mkdir unmined && cd unmined
+    $ mv ~/Downloads/unmined-cli_0.18.16-dev_net6.0-linux-x64_sc.tar.gz .
+    $ tar -xzf unmined-cli_0.18.16-dev_net6.0-linux-x64_sc.tar.gz
+    $ ln -s unmined-cli_0.18.16-dev_net6.0-linux-x64_sc/unmined-cli .
+
+Then you can render a single map to a location:
+
+     $ ./mserver_map.sh -n foo -o maps
+     $ ls maps
+     index.html      foo
+     $ ls maps/foo
+     unmined
 
 # Commands to remember
 

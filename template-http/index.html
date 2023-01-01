@@ -33,8 +33,9 @@
         var innerHTML = "<h3>Minecraft worlds:</h3><ul>";
         for(var world in data) {
             innerHTML += "<li>" + world + ": " +
-		"<a href='" + world + "/output.png'>image</a> | " +
-		"<a href='" + world + "'>map</a>" +
+		"<a href='" + world + "/mcmap/output.png'>image</a> | " +
+		"<a href='" + world + "/mcmap/'>mcmap</a> | " +
+		"<a href='" + world + "/unmined/unmined.index.html'>unmined</a>" +
 		"</li>";
         }
         innerHTML += "</ul>";

@@ -15,6 +15,7 @@ RCON_PASSWORD_FILE=$SYSTEMD_DIR/rcon.password
 
 RCON=$TOOLS_DIR/mcrcon/mcrcon
 MCMAP=$TOOLS_DIR/mcmap/build/bin/mcmap
+UNMINED=$TOOLS_DIR/unmined/unmined-cli
 
 MINECRAFT_VERSION_MANIFEST=https://launchermeta.mojang.com/mc/game/version_manifest.json
 DEFAULT_MINECRAFT_PORT=25565
