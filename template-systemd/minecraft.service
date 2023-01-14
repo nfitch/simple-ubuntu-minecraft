@@ -20,7 +20,7 @@ ProtectSystem=full
 
 WorkingDirectory=REPLACE_MSERVER_WORLD_DIRECTORY
 ExecStart=/usr/bin/java -Xms${MINHEAP} -Xmx${MAXHEAP} -XX:ParallelGCThreads=${THREADS} -jar server.jar --nogui
-ExecStop=/mnt/md0/minecraft/tools/mcrcon/mcrcon -H localhost -p ${RCON_PASSWD} stop
+ExecStop=REPLACE_MSERVER_TOOLS_DIRECTORY/mcrcon/mcrcon -H localhost -p ${RCON_PASSWD} stop
 
 [Install]
 WantedBy=multi-user.target

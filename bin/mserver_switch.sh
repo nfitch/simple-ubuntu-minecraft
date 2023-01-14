@@ -29,7 +29,7 @@ fi
 minecraft_is_running
 if [ $? == 1 ]; then
     echo "Minecraft is already running.  Stop the server, then switch."
-    exit 1    
+    exit 1
 fi
 
 setup_dirs
@@ -41,6 +41,7 @@ sed -i -e "s#REPLACE_RCON_PASSWORD#$RCON_PASSWORD#g" $SYSTEMD_VARS_FILE
 # Replacements in minecraft.service
 WORKING_DIRECTORY=$WORLDS_DIR/$NAME
 sed -i -e "s#REPLACE_MSERVER_WORLD_DIRECTORY#$WORKING_DIRECTORY#g" $SYSTEMD_SERVICE_FILE
+sed -i -e "s#REPLACE_MSERVER_TOOLS_DIRECTORY#$TOOLS_DIR#g" $SYSTEMD_SERVICE_FILE
 
 # Reload the systemd files we just changed
 systemctl daemon-reload
